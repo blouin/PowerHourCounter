@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "./static/js/main.a7655130.chunk.js",
-    "main.js.map": "./static/js/main.a7655130.chunk.js.map",
+    "main.js": "./static/js/main.a4b68363.chunk.js",
+    "main.js.map": "./static/js/main.a4b68363.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.33653f31.js",
     "runtime-main.js.map": "./static/js/runtime-main.33653f31.js.map",
     "static/js/2.a809e08f.chunk.js": "./static/js/2.a809e08f.chunk.js",
     "static/js/2.a809e08f.chunk.js.map": "./static/js/2.a809e08f.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.df736aaa9fd4a20073aebc3371bae52d.js": "./precache-manifest.df736aaa9fd4a20073aebc3371bae52d.js",
+    "precache-manifest.b2253ee028403df5f930e0d6de21220a.js": "./precache-manifest.b2253ee028403df5f930e0d6de21220a.js",
     "service-worker.js": "./service-worker.js",
     "static/js/2.a809e08f.chunk.js.LICENSE.txt": "./static/js/2.a809e08f.chunk.js.LICENSE.txt",
     "static/media/beer-ca.png": "./static/media/beer-ca.ed952d02.png",
@@ -23,6 +23,6 @@
   "entrypoints": [
     "static/js/runtime-main.33653f31.js",
     "static/js/2.a809e08f.chunk.js",
-    "static/js/main.a7655130.chunk.js"
+    "static/js/main.a4b68363.chunk.js"
   ]
 }
