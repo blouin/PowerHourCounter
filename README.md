@@ -7,7 +7,7 @@ Simple instructions, take one shot of beer, on the minute, for one hour...
 <br /><br />
 
 ## Get playing right now
-- To use the online version, check out [https://www.powerhourcounter.com/](https://www.powerhourcounter.com/).
+- To use the online version, check out [https://blouin.github.io/PowerHourCounter](https://blouin.github.io/PowerHourCounter).
 - Download the already pre-packaged Electron app [here](https://www.github.com/blouin/PowerHourCounter/releases). 
     - Note that release is not signed so you may get a scan warning.
 

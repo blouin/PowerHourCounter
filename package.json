@@ -7,8 +7,8 @@
   "main": "src/electron/electron.js",
   "author": {
     "name": "Blouin",
-    "url": "https://www.powerhourcounter.com",
-    "email": "blouin@powerhourcounter.com"
+    "url": "https://blouin.github.io/PowerHourCounter",
+    "email": "none@none.com"
   },
   "repository": {
     "type": "git",
