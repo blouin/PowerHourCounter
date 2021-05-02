@@ -31,10 +31,6 @@ export default () => {
 
     const history = createHashHistory();
     history.listen(location => {
-        if (window.FB) {
-            const items = [].slice.call(document.getElementsByClassName('social-wrapper'));
-            items.forEach((item) => window.FB.XFBML.parse(item));
-        }
         logPageView(location.pathname);
     });
     

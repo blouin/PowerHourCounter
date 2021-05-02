@@ -40,9 +40,6 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translateY(-50%) translateX(-50%)',
         left: '50%'
     },
-    social: {
-        textAlign: 'right'
-    },
     pictureFrame: {
         width: '100%', 
         height: '100%',
@@ -120,17 +117,6 @@ export default () => {
                             {filteredPlayers.length !== 0 && <li>{translations.instructionsLine4}</li>}
                             <li>{translations.formatString(translations.instructionsLine5, totalShot)}</li>
                         </ul>
-                        <div className={`${classes.social} social-wrapper`}>
-                            <div
-                                class="fb-like"
-                                data-href="https://facebook.com/powerhourcounter" 
-                                data-width="" 
-                                data-layout="button"
-                                data-action="like" 
-                                data-size="small" 
-                                data-share="true">
-                            </div>
-                        </div>
                     </CardContent>
                 </Card>
             </div>

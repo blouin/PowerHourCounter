@@ -54,11 +54,6 @@ const useStyles = makeStyles((theme) => ({
     progressRowItemTransition: {
         transition: 'background 0.5s linear',
     },
-    social: {
-        marginTop: '15px',
-        marginRight: '15px',
-        textAlign: 'right'
-    }
   })
 );
 
@@ -140,27 +135,9 @@ export default () => {
             .catch(e => { console.log(e); setCountry('') })
     }, [])
 
-    useEffect(() => {
-        if (gameHasEnded) {
-            window.FB.XFBML.parse(document.getElementById('done-fb-like'));
-        }
-    })
     // Hide if done
     if (gameHasEnded) {
-        return (
-            <div id="done-fb-like" className={classes.social}>
-                <Typography>{translations.share}</Typography>
-                <div
-                    class="fb-like"
-                    data-href="https://facebook.com/powerhourcounter" 
-                    data-width="" 
-                    data-layout="button"
-                    data-action="like" 
-                    data-size="large" 
-                    data-share="true">
-                </div>
-            </div>
-        );
+        return (null);
     }
 
     return (
