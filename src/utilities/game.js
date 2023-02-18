@@ -6,10 +6,10 @@ import { addHistory } from './storage';
 // Done images
 // ***********
 
-import * as done1 from '../assets/done-1.png';
-import * as done2 from '../assets/done-2.png';
-import * as done3 from '../assets/done-3.png';
-import * as done4 from '../assets/done-4.png';
+import done1 from '../assets/done-1.png';
+import done2 from '../assets/done-2.png';
+import done3 from '../assets/done-3.png';
+import done4 from '../assets/done-4.png';
 const done = [ done1, done2, done3, done4 ];
 
 const getEndImage = () => {
