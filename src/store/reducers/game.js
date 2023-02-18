@@ -18,34 +18,34 @@ const game = (currentState = null, action) => {
             {
                 switch (action.variant) {
                     case GAME_VARIANT_BLITZKRIEG:
-                        return { ...currentState, variant: action.variant, totalShot: 60 };
+                        return { ...currentState, variant: action.variant, totalShot: 60 }
                     case GAME_VARIANT_POWER:
-                        return { ...currentState, variant: action.variant, totalShot: 30 };
+                        return { ...currentState, variant: action.variant, totalShot: 30 }
                     default:
-                        return { ...currentState, variant: action.variant, totalShot: 60 };
+                        return { ...currentState, variant: action.variant, totalShot: 60 }
                 }
             }
         case SET_TOTAL_SHOT:
-            return { ...currentState, totalShot: action.totalShot };
+            return { ...currentState, totalShot: action.totalShot }
         case START_GAME:
-            return { ...currentState, state: GAME_STATE_IN_PROGRESS };
+            return { ...currentState, state: GAME_STATE_IN_PROGRESS }
         case STOP_GAME:
-            return { ...currentState, state: GAME_STATE_COMPLETE };
+            return { ...currentState, state: GAME_STATE_COMPLETE }
         case UPDATE_GAME_DATA:
-            return { ...currentState, currentTime: action.currentTime, currentShot: action.currentShot };
+            return { ...currentState, currentTime: action.currentTime, currentShot: action.currentShot }
         case UPDATE_GAME_IMAGE:
-            return { ...currentState, currentImageUrl: action.imageUrl };
+            return { ...currentState, currentImageUrl: action.imageUrl }
         case PLAYER_ADD:
             {
-                const newPlayer = { id: Date.now().toFixed() * Math.random(), name: action.name, selected: true, lastShot: -1 };
+                const newPlayer = { id: Date.now().toFixed() * Math.random(), name: action.name, selected: true, lastShot: -1 }
                 const newPlayers = [...currentState.players];
                 newPlayers.push(newPlayer);
-                return { ...currentState, players: newPlayers };
+                return { ...currentState, players: newPlayers }
             }
         case PLAYER_REMOVE:
             {
                 const newPlayers = currentState.players.filter(item => item.id !== action.playerId);
-                return { ...currentState, players: newPlayers };
+                return { ...currentState, players: newPlayers }
             }
         case PLAYER_TOGGLE:
             {
@@ -56,7 +56,7 @@ const game = (currentState = null, action) => {
                         item
                     );
 
-                return { ...currentState, players: newPlayers };
+                return { ...currentState, players: newPlayers }
             }
         case PLAYER_QUIT:
             {
@@ -70,7 +70,7 @@ const game = (currentState = null, action) => {
                 // Check if we need to stop game
                 const { newState, newImageUrl } = checkLastPlayerQuit(currentState, newPlayers);
 
-                return { ...currentState, players: newPlayers, state: newState, currentImageUrl: newImageUrl };
+                return { ...currentState, players: newPlayers, state: newState, currentImageUrl: newImageUrl }
             }
         default:
             return currentState;

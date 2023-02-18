@@ -50,7 +50,7 @@ const BottomWrapper = () => {
     );
 }
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
 
     // Game clock
@@ -66,3 +66,5 @@ export default () => {
         </>
     );
 }
+
+export default _DEFAULT;

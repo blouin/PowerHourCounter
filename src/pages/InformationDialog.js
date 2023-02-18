@@ -33,14 +33,13 @@ let translations = new LocalizedStrings(
     }
 );
 
-export default (props) => {
+const _DEFAULT = (props) => {
     translations.setLanguage(useSelector(s => s.ui.language));
     const { open, setOpen } = props;
 
     return (
-        <Dialog 
-            disableBackdropClick={true}
-            open={open} 
+        <Dialog
+            open={open}
             onClose={() => setOpen(false)}>
             <DialogTitle>{translations.title}</DialogTitle>
             <DialogContent>
@@ -48,9 +47,8 @@ export default (props) => {
                     {translations.description}
                     <br /><br />
                     {translations.source}
-                    <br /><br />
-                    <Divider />
                 </DialogContentText>
+                <Divider />
                 <DialogActions>
                     <Button variant="text" color="primary" href={WIKI_URL} target="_blank">{translations.wikiUrl}</Button>
                     <Button variant="text" color="primary" href={GITHUB_URL} target="_blank">{translations.gitHubUrl}</Button>
@@ -60,3 +58,5 @@ export default (props) => {
         </Dialog>
     );
 }
+
+export default _DEFAULT;

@@ -1,7 +1,6 @@
 import { default as store, GAME_STATE_COMPLETE } from '../store/store';
 import { UPDATE_GAME_IMAGE, STOP_GAME } from '../store/reducers/game';
 import { addHistory } from './storage';
-import { logGameEnd } from './analytics';
 
 // ***********
 // Done images
@@ -21,7 +20,6 @@ export const endGame = () => {
     const endImage = getEndImage();
     store.dispatch({ type: UPDATE_GAME_IMAGE, imageUrl: endImage });
     store.dispatch({ type: STOP_GAME });
-    logGameEnd('Done', store.getState().game.currentShot + 1, store.getState().game.totalShot); // +1 (still in dispatch)
     addHistory(store.getState().game);
 }
 
@@ -44,9 +42,8 @@ export const checkLastPlayerQuit = (currentState, newPlayers) => {
 
     // Save history
     if (newState === GAME_STATE_COMPLETE) {
-        logGameEnd('AllQuit', currentState.currentShot, currentState.totalShot);
         addHistory({...currentState, players: newPlayers});
     }
 
-    return { newState, newImageUrl };
+    return { newState, newImageUrl }
 }

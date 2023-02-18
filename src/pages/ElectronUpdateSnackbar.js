@@ -35,7 +35,7 @@ if (ipc && isElectron) {
     });
 }
 
-export default () => {
+const _DEFAULT = () => {
     translations.setLanguage(useSelector(s => s.ui.language));
     const dispatch = useDispatch();
     const show = useSelector(s => s.ui.update !== UPDATE_NA);
@@ -45,25 +45,27 @@ export default () => {
     return (
         <Snackbar
             anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+                vertical: 'bottom',
+                horizontal: 'left',
             }}
             open={show}
             autoHideDuration={6000}
             onClose={() => dispatch({ type: SET_UPDATE, update: UPDATE_NA })}
             message={text}
             action={
-            <>
-                {restart && (
-                    <Button color="primary" size="small" onClick={() => ipc.send(IPC_MESSAGE_UPDATE_RESTART)}>
-                        {translations.restart}
-                    </Button>)
-                }
-                <IconButton size="small" aria-label="close" color="inherit" onClick={() => dispatch({ type: SET_UPDATE, update: UPDATE_NA })}>
-                    <CloseIcon fontSize="small" />
-                </IconButton>
-            </>
+                <>
+                    {restart && (
+                        <Button color="primary" size="small" onClick={() => ipc.send(IPC_MESSAGE_UPDATE_RESTART)}>
+                            {translations.restart}
+                        </Button>)
+                    }
+                    <IconButton size="small" aria-label="close" color="inherit" onClick={() => dispatch({ type: SET_UPDATE, update: UPDATE_NA })}>
+                        <CloseIcon fontSize="small" />
+                    </IconButton>
+                </>
             }
         />
     );
 }
+
+export default _DEFAULT;

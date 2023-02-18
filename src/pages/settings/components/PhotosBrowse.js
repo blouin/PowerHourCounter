@@ -36,7 +36,32 @@ const selectFolderFunc = () => {
     ipc.send(IPC_MESSAGE_SELECT_FOLDER_REQUEST)
 }
 
-export default (props) => {
+const PhotosInfo = (props) => {
+    const classes = props.classes;
+    const translations = props.translations;
+    const photos = useSelector(s => s.photos);
+
+    if (photos.state === PHOTOS_STATE_NA) {
+        return (null);
+    }
+
+    if (photos.state === PHOTOS_STATE_LOADING) {
+        return (<LinearProgress />);
+    }
+
+    return (
+        <>
+            <Typography className={classes.photosOptionText}>
+                {photos.folder.length > 50 ? `${photos.folder.substring(0, 22)}...${photos.folder.substring(photos.folder.length - 22)}` : photos.folder}
+            </Typography>
+            <Typography className={classes.photosOptionText}>
+                {translations.formatString(translations.filesCountFolder, photos.files.length)}
+            </Typography>
+        </>
+    );
+}
+
+const _DEFAULT = (props) => {
     const classes = props.classes;
     const translations = props.translations;
 
@@ -50,27 +75,4 @@ export default (props) => {
     );
 }
 
-const PhotosInfo = (props) => {
-    const classes = props.classes;
-    const translations = props.translations;
-    const photos = useSelector(s => s.photos);
-
-    if (photos.state === PHOTOS_STATE_NA) {
-        return (null);
-    }
-
-    if (photos.state === PHOTOS_STATE_LOADING) {
-        return (<LinearProgress  />);
-    }
-    
-    return (
-        <>
-            <Typography className={classes.photosOptionText}>
-                {photos.folder.length > 50 ? `${photos.folder.substring(0, 22)}...${photos.folder.substring(photos.folder.length - 22)}` : photos.folder}
-            </Typography>
-            <Typography className={classes.photosOptionText}>
-                {translations.formatString(translations.filesCountFolder, photos.files.length)}
-            </Typography>
-        </>
-    );
-}
+export default _DEFAULT;

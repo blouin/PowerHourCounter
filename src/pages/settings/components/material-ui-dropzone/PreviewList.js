@@ -118,6 +118,6 @@ PreviewList.propTypes = {
     previewGridProps: PropTypes.object,
     showFileNames: PropTypes.bool,
     useChipsForPreview: PropTypes.bool,
-};
+}
 
 export default withStyles(styles, {name: 'MuiDropzonePreviewList'})(PreviewList);

@@ -40,17 +40,17 @@ let translations = new LocalizedStrings(
     }
 );
 
-export default (props) => {
+const _DEFAULT = (props) => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const variant = useSelector(s => s.game.variant);
     const totalShot = useSelector(s => s.game.totalShot);
     const tooltipTitle = props.tooltip && getFlagValue(FLAG_TOOLTIP_VERSION) ? process.env.REACT_APP_VERSION : '';
-    const actualTitle = 
-    variant === GAME_VARIANT_BLITZKRIEG ? translations.blitzkriegTitle :
-        (variant === GAME_VARIANT_POWER ? translations.powerTitle : 
-            (totalShot === 100 ? translations.centurionTitle : (totalShot === 30 ? translations.demiTitle : translations.title)));
-    
+    const actualTitle =
+        variant === GAME_VARIANT_BLITZKRIEG ? translations.blitzkriegTitle :
+            (variant === GAME_VARIANT_POWER ? translations.powerTitle :
+                (totalShot === 100 ? translations.centurionTitle : (totalShot === 30 ? translations.demiTitle : translations.title)));
+
     return (
         <>
             <AppBar position="fixed" className={classes.root}>
@@ -66,3 +66,5 @@ export default (props) => {
         </>
     );
 }
+
+export default _DEFAULT;

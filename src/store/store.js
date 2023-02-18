@@ -40,7 +40,7 @@ const defaultState = {
         state: PHOTOS_STATE_NA,
         files: []
     }
-};
+}
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools());
 

@@ -21,7 +21,7 @@ const ButtonHistory = () => {
     );
 }
 
-export default () => {
+const _DEFAULT = () => {
     return (
         <Header tooltip={true}>
             <ButtonHistory />
@@ -29,3 +29,5 @@ export default () => {
         </Header>
     );
 }
+
+export default _DEFAULT;

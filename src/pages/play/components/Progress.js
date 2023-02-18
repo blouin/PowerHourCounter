@@ -4,12 +4,12 @@ import LocalizedStrings from 'localized-strings';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { GAME_STATE_COMPLETE } from '../../../store/store';
-import * as shotFull from '../../../assets/shot-full.png';
-import * as shotEmpty from '../../../assets/shot-empty.png';
-import * as beer from '../../../assets/beer.png';
-import * as beerLoad from '../../../assets/beer-load.png';
-import * as beerCA from '../../../assets/beer-ca.png';
-import * as beerDE from '../../../assets/beer-de.png';
+import shotFull from '../../../assets/shot-full.png';
+import shotEmpty from '../../../assets/shot-empty.png';
+import beer from '../../../assets/beer.png';
+import beerLoad from '../../../assets/beer-load.png';
+import beerCA from '../../../assets/beer-ca.png';
+import beerDE from '../../../assets/beer-de.png';
 
 const SHOTS_IN_BEER = 11;
 const LOADING_BEER = 'DEFAULT';
@@ -118,7 +118,7 @@ const BeerItem = (props) => {
     return <div className={`${classes.progressRowItem}`} style={{ backgroundImage: `url(${imageUrl})`, visibility: visibilityValue }} />;
 }
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const totalShot = useSelector(s => s.game.totalShot);
@@ -153,4 +153,6 @@ export default () => {
             </div>
         </div>
     );
-};
+}
+
+export default _DEFAULT;

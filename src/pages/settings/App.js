@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   })
 );
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
 
     return (
@@ -27,4 +27,6 @@ export default () => {
             </div>
         </>
     );
-};
+}
+
+export default _DEFAULT;

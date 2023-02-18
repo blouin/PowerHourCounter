@@ -15,7 +15,7 @@ const variantIcon = {
     warning: WarningIcon,
     error: ErrorIcon,
     info: InfoIcon,
-};
+}
 
 const styles = (theme) => ({
     success: {
@@ -78,6 +78,6 @@ SnackbarContentWrapper.propTypes = {
     message: PropTypes.node,
     onClose: PropTypes.func,
     variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
-};
+}
 
 export default withStyles(styles, {name: 'MuiDropzoneSnackbar'})(SnackbarContentWrapper);

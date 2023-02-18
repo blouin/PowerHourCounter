@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GAME_STATE_IN_PROGRESS, GAME_VARIANT_BLITZKRIEG, GAME_VARIANT_POWER } from '../store/store';
 import { UPDATE_GAME_DATA, UPDATE_GAME_IMAGE } from '../store/reducers/game';
 import { endGame } from './game';
-import { logGameProgress } from './analytics';
 
 const CHANGE_IMAGE_TIME_1 = 15;
 const CHANGE_IMAGE_TIME_2 = 45;
@@ -15,8 +14,8 @@ const playSound = () => {
 
 export const useGameClock = () => {
     const dispatch = useDispatch();
-    const gameData = useSelector(s => s.game, true);
-    const photosData = useSelector(s => s.photos, true);
+    const gameData = useSelector(s => s.game);
+    const photosData = useSelector(s => s.photos);
     const sound = useSelector(s => s.ui.sound);
     
     // Timer
@@ -29,7 +28,6 @@ export const useGameClock = () => {
             const intervalId = window.setInterval(() => {
                 let newTime = gameData.currentTime - 1;
                 let newShot = gameData.currentShot;
-                let totalShot = gameData.totalShot;
 
                 // At zero, drink
                 if (newTime === 0) {
@@ -39,9 +37,6 @@ export const useGameClock = () => {
                     newShot = newShot + 1;
                     if (sound) {
                         playSound();
-                    }
-                    if (newShot % 5 === 0) {
-                        logGameProgress(newShot, totalShot);
                     }
                 }
 
@@ -59,7 +54,7 @@ export const useGameClock = () => {
                 // Update
                 dispatch({ type: UPDATE_GAME_DATA, currentTime: newTime, currentShot: newShot })
         }, 1000);
-        return () => { window.onbeforeunload = null; clearInterval(intervalId) };
+        return () => { window.onbeforeunload = null; clearInterval(intervalId) }
         }
     });
 }

@@ -63,7 +63,7 @@ const styles = ({palette, shape, spacing}) => ({
 const defaultSnackbarAnchorOrigin = {
     horizontal: 'left',
     vertical: 'bottom',
-};
+}
 
 const defaultGetPreviewIcon = (fileObject, classes) => {
     if (isImage(fileObject.file)) {
@@ -75,7 +75,7 @@ const defaultGetPreviewIcon = (fileObject, classes) => {
     }
 
     return <AttachFileIcon className={classes.image} />;
-};
+}
 
 /**
  * This components creates a Material-UI Dropzone, with previews and snackbar notifications.
@@ -86,7 +86,7 @@ class DropzoneArea extends React.PureComponent {
         openSnackBar: false,
         snackbarMessage: '',
         snackbarVariant: 'success',
-    };
+    }
 
     componentDidMount() {
         this.filesArray(this.props.initialFiles);
@@ -116,7 +116,7 @@ class DropzoneArea extends React.PureComponent {
                     return {
                         file,
                         data,
-                    };
+                    }
                 })
             );
 
@@ -164,7 +164,7 @@ class DropzoneArea extends React.PureComponent {
                 return {
                     file,
                     data,
-                };
+                }
             })
         );
 
@@ -182,7 +182,7 @@ class DropzoneArea extends React.PureComponent {
             if (filesLimit <= 1) {
                 return {
                     fileObjects: [].concat(fileObjs[0]),
-                };
+                }
             }
 
             // Handle multiple files
@@ -191,7 +191,7 @@ class DropzoneArea extends React.PureComponent {
                     state.fileObjects,
                     fileObjs
                 ),
-            };
+            }
         },
         () => {
             const {onChange} = this.props;
@@ -252,13 +252,13 @@ class DropzoneArea extends React.PureComponent {
                 snackbarVariant: 'info',
             });
         });
-    };
+    }
 
     handleCloseSnackbar = () => {
         this.setState({
             openSnackBar: false,
         });
-    };
+    }
 
     render() {
         const {
@@ -419,7 +419,7 @@ DropzoneArea.defaultProps = {
         }
         return message;
     },
-};
+}
 
 DropzoneArea.propTypes = {
     /** @ignore */
@@ -561,6 +561,6 @@ DropzoneArea.propTypes = {
      * @param {File} deletedFile The file that was removed.
      */
     onDelete: PropTypes.func,
-};
+}
 
 export default withStyles(styles, {name: 'MuiDropzoneArea'})(DropzoneArea);

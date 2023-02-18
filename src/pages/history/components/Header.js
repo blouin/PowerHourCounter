@@ -58,7 +58,7 @@ const ButtonHome = () => {
     );
 }
 
-export default (props) => {
+const _DEFAULT = (props) => {
     translations.setLanguage(useSelector(s => s.ui.language));
 
     return (
@@ -69,3 +69,5 @@ export default (props) => {
         </Header>
     );
 }
+
+export default _DEFAULT;

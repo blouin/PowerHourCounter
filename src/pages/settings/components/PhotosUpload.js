@@ -12,33 +12,8 @@ import { default as DropzoneArea } from './material-ui-dropzone/DropzoneArea'
 import { SET_FILES, SET_STATE } from '../../../store/reducers/photos';
 import { convertImagesForStore } from '../../../utilities/arraybuffer'
 import { PHOTOS_STATE_NA, PHOTOS_STATE_LOADING, PHOTOS_STATE_READY } from '../../../store/store';
-import { logModalView } from '../../../utilities/analytics';
 
 const MAX_FILES = 200;
-
-export default (props) => {
-    const classes = props.classes;
-    const translations = props.translations;
-    const [open, setOpen] = useState(false);
-
-    return (
-        <>
-        
-            <Button variant="contained" color="primary" className={classes.photosOptionButton} onClick={() => { logModalView('PhotosUpload'); setOpen(true) }}>
-                {translations.filesChooseOnline}
-            </Button>
-            <PhotosDialog
-                title={translations.uploadTitle}
-                open={open}
-                setOpen={setOpen}
-                translations={translations}
-                classes={classes}>
-                {translations.uploadTitle}
-            </PhotosDialog>
-            <PhotosInfo translations={translations} classes={classes} />
-        </>
-    );
-}
 
 const PhotosInfo = (props) => {
     const classes = props.classes;
@@ -52,7 +27,7 @@ const PhotosInfo = (props) => {
     if (photos.state === PHOTOS_STATE_LOADING) {
         return (<LinearProgress />);
     }
-    
+
     return (
         <Typography className={classes.photosOptionText}>
             {translations.formatString(translations.filesCountOnline, photos.files.length)}
@@ -72,7 +47,6 @@ export const PhotosDialog = (props) => {
     return (
         <Dialog
             open={open}
-            disableBackdropClick={true}
             onClose={() => setOpen(false)}>
             <DialogTitle>{title}</DialogTitle>
             <DialogContent className={classes.dropZoneDialog}>
@@ -90,32 +64,58 @@ export const PhotosDialog = (props) => {
                     dropzoneClass={classes.dropzoneClass}
                     dropzoneParagraphClass={classes.dropzoneParagraphClass}
                     onDrop={() => setProgressVisible(true)}
-                    onChange={(files) => { setProgressVisible(false); setImageFiles(files); setConfirmDisabled(files.length === 0)} }
+                    onChange={(files) => { setProgressVisible(false); setImageFiles(files); setConfirmDisabled(files.length === 0) }}
                 />
                 <Divider />
             </DialogContent>
             <DialogActions>
                 <Button variant="text" color="primary" onClick={() => setOpen(false)}>{translations.uploadCancelText}</Button>
-                <Button variant="contained" color="primary" disabled={confirmDisabled} 
+                <Button variant="contained" color="primary" disabled={confirmDisabled}
                     onClick={() => {
 
-                        setOpen(false); 
+                        setOpen(false);
                         dispatch({ type: SET_STATE, state: PHOTOS_STATE_LOADING });
 
                         convertImagesForStore(imageFiles)
                             .then((storeFiles) => {
-                                dispatch({ type: SET_FILES, files: storeFiles});
+                                dispatch({ type: SET_FILES, files: storeFiles });
                                 dispatch({ type: SET_STATE, state: PHOTOS_STATE_READY });
                             })
-                            .catch(() => { 
+                            .catch(() => {
                                 dispatch({ type: SET_FILES, files: [] });
                                 dispatch({ type: SET_STATE, state: PHOTOS_STATE_NA });
                             })
 
                     }}>
-                        {translations.uploadSubmitText}
-                    </Button>
+                    {translations.uploadSubmitText}
+                </Button>
             </DialogActions>
         </Dialog>
     );
-} 
+}
+
+const _DEFAULT = (props) => {
+    const classes = props.classes;
+    const translations = props.translations;
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+        
+            <Button variant="contained" color="primary" className={classes.photosOptionButton} onClick={() => { setOpen(true) }}>
+                {translations.filesChooseOnline}
+            </Button>
+            <PhotosDialog
+                title={translations.uploadTitle}
+                open={open}
+                setOpen={setOpen}
+                translations={translations}
+                classes={classes}>
+                {translations.uploadTitle}
+            </PhotosDialog>
+            <PhotosInfo translations={translations} classes={classes} />
+        </>
+    );
+}
+
+export default _DEFAULT;

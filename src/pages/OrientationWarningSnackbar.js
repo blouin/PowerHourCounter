@@ -17,7 +17,7 @@ let translations = new LocalizedStrings(
     }
 );
 
-export default () => {
+const _DEFAULT = () => {
     translations.setLanguage(useSelector(s => s.ui.language));
     const [dismissed, setDismissed] = useState(false);
     const matchesOrientation = useMediaQuery('(orientation:portrait)');
@@ -27,20 +27,22 @@ export default () => {
     return (
         <Snackbar
             anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+                vertical: 'bottom',
+                horizontal: 'left',
             }}
             open={show}
             autoHideDuration={6000}
             onClose={() => setDismissed(true)}
             message={translations.text}
             action={
-            <>
-                <IconButton size="small" aria-label="close" color="inherit" onClick={() => setDismissed(true)}>
-                    <CloseIcon fontSize="small" />
-                </IconButton>
-            </>
+                <>
+                    <IconButton size="small" aria-label="close" color="inherit" onClick={() => setDismissed(true)}>
+                        <CloseIcon fontSize="small" />
+                    </IconButton>
+                </>
             }
         />
     );
 }
+
+export default _DEFAULT;

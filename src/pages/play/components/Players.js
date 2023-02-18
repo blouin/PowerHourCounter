@@ -145,7 +145,7 @@ const PlayerItemLastShot = (props) => {
     );
 }
 
-export default (props) => {
+const _DEFAULT = (props) => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const { open, setOpen } = props;
@@ -178,4 +178,6 @@ export default (props) => {
             </div>
         </Drawer>
     );
-};
+}
+
+export default _DEFAULT;

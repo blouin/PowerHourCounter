@@ -101,7 +101,7 @@ const ListPlayers = () => {
 const AddPlayer = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const addPlayerFunc = () => { dispatch({ type: PLAYER_ADD, name: document.getElementById('add').value }); document.getElementById('add').value = ''; };
+    const addPlayerFunc = () => { dispatch({ type: PLAYER_ADD, name: document.getElementById('add').value }); document.getElementById('add').value = ''; }
 
     return (
         <div className={classes.addRoot}>
@@ -115,7 +115,7 @@ const AddPlayer = () => {
     );
 }
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     
@@ -134,3 +134,5 @@ export default () => {
         </div>
     );
 }
+
+export default _DEFAULT;

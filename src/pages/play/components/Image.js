@@ -80,7 +80,7 @@ let translations = new LocalizedStrings(
     }
 );
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const matchesHide = useMediaQuery('(min-width:400px)');
@@ -129,4 +129,6 @@ export default () => {
             <div className={classes.pictureFrame} style={{backgroundImage: `url(${gameImageUrl})`}} />
         </div>
     );
-};
+}
+
+export default _DEFAULT;

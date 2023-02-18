@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import LocalizedStrings from 'localized-strings';
 import { makeStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FormControl from '@material-ui/core/FormControl';
@@ -199,7 +199,6 @@ const Variant = (props) => {
     const dispatch = useDispatch();
     const variant = useSelector(s => s.game.variant);
 
-    console.log(variant)
     return (
         <div>
             <Typography className={classes.title}>
@@ -324,7 +323,7 @@ const ThemeDropDown = () => {
     );
 }
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const min = process.env.NODE_ENV === "development" ? MIN_SHOT_DEV : MIN_SHOT;
@@ -338,11 +337,11 @@ export default () => {
             <Photos />
 
             <div className={classes.extraOptionGroup}>
-                <ExpansionPanel variant="elevation">
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Accordion variant="elevation">
+                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                         <Typography>{translations.moreOptions}</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
+                    </AccordionSummary>
+                    <AccordionDetails>
 
                         <div className={classes.extraOptionGroupItem}>
                             <SoundDropDown />
@@ -350,18 +349,20 @@ export default () => {
                             <ThemeDropDown />
                         </div>
 
-                    </ExpansionPanelDetails>
-                </ExpansionPanel>
+                    </AccordionDetails>
+                </Accordion>
             </div>
-            
+
             <div className={classes.warningGroup}>
                 <Typography>
                     <b>{translations.warning1}</b>
                 </Typography>
-                <Typography style={{fontSize: '85%'}}>
+                <Typography style={{ fontSize: '85%' }}>
                     <b>{translations.warning2}</b>
                 </Typography>
             </div>
         </div>
     );
 }
+
+export default _DEFAULT;

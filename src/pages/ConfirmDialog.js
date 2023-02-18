@@ -21,7 +21,7 @@ let translations = new LocalizedStrings(
     }
 );
 
-export default (props) => {
+const _DEFAULT = (props) => {
     const { title, children, open, setOpen, onConfirm } = props;
     translations.setLanguage(useSelector(s => s.ui.language));
 
@@ -40,4 +40,6 @@ export default (props) => {
             </DialogActions>
         </Dialog>
     );
-};
+}
+
+export default _DEFAULT;

@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { GAME_STATE_READY, GAME_STATE_COMPLETE } from '../../../store/store';
 import { START_GAME } from '../../../store/reducers/game';
-import { logGameStart } from '../../../utilities/analytics';
 
 const YELLOW = "#ffc400";
 const RED = "#ff3d00";
@@ -61,24 +60,19 @@ let translations = new LocalizedStrings(
 const StartButton = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const variant = useSelector(s => s.game.variant);
-    const totalShot = useSelector(s => s.game.totalShot);
-    const hasPlayers = useSelector(s => s.game.players.length !== 0);
-    const hasPhotos = useSelector(s => s.photos.files.length !== 0); // Will be removed at some point, for now, simply log if photo picker is working
     const gameIsReady = useSelector(s => s.game.state) === GAME_STATE_READY;
 
     return (
         <div className={classes.startButton}>
             {gameIsReady && <Button variant="contained" color="primary" size="large" 
                 onClick={() => {
-                    logGameStart(variant, totalShot, hasPlayers, hasPhotos);
                     dispatch({ type: START_GAME })
                 }}>{translations.startButton}</Button>}
         </div>
     );
 }
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const currentTime = useSelector(s => s.game.currentTime);
@@ -100,4 +94,6 @@ export default () => {
             </div>
         </div>
     );
-};
+}
+
+export default _DEFAULT;

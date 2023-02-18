@@ -13,14 +13,13 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { GAME_STATE_IN_PROGRESS, GAME_STATE_READY } from '../../../store/store';
 import { SET_SOUND } from '../../../store/reducers/ui';
 import InformationDialog from '../../InformationDialog'; // TODO: Maybe move to base header?
-import { logModalView } from '../../../utilities/analytics';
 
 const ButtonDownload = () => {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <IconButton edge="start" color="inherit" onClick={() => { logModalView('InformationDialog'); setOpen(true)} }>
+            <IconButton edge="start" color="inherit" onClick={() => { setOpen(true)} }>
                 <InfoOutlinedIcon />
             </IconButton>
             <InformationDialog open={open} setOpen={setOpen} />
@@ -94,7 +93,7 @@ const ButtonDrawer = (props) => {
     );
 }
 
-export default () => {
+const _DEFAULT = () => {
     const [playersOpen, setPlayersOpen] = useState(false);
     return (
         <>
@@ -109,3 +108,5 @@ export default () => {
         </>
     );
 }
+
+export default _DEFAULT;

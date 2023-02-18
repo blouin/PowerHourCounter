@@ -70,7 +70,7 @@ export const saveSettings = (store) => {
             theme: state.ui.theme,
             sound: state.ui.sound,
             players: state.game.players.map((item, index) => ({ name: item.name, selected: item.selected })),
-        };
+        }
 
         if (isElectron) {
             settings = {
@@ -102,7 +102,7 @@ export const addHistory = (state) => {
             date: new Date().toISOString().split('T')[0],
             totalShot: state.totalShot,
             players: state.players.filter(i => i.selected).map((item, index) => ({ name: item.name, lastShot: item.lastShot }))
-        };
+        }
 
         const history = JSON.parse(window.localStorage.getItem(HISTORY_KEY)) || [];
         history.push(historyItem);

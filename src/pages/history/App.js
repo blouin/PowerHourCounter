@@ -67,7 +67,7 @@ const None = (props) => {
 const HistoryItem = (props) => {
     const item = props.item;
     const [open, setOpen] = useState(false);
-    const deleteFunction = () => { props.setHistory(removeHistory(item.id)) };
+    const deleteFunction = () => { props.setHistory(removeHistory(item.id)) }
 
     return (
         <>
@@ -124,9 +124,9 @@ const HistoryItemPlayers = (props) => {
             ))}
         </List>
     );
-};
+}
 
-export default () => {
+const _DEFAULT = () => {
     const classes = useStyles();
     translations.setLanguage(useSelector(s => s.ui.language));
     const [history, setHistory] = useState(loadHistory() || []);
@@ -141,4 +141,6 @@ export default () => {
             </List>
         </>
     );
-};
+}
+
+export default _DEFAULT;
